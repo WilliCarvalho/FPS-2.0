@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour
 
         if(cam != null)
         {
-            print("to aqui");
             rotCam += camRotation.x;
             rotCam = Mathf.Clamp(rotCam, -80, 80);
 

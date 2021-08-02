@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class Gun : MonoBehaviour
     public GameObject pointGun;
     public ParticleSystem effectFire;
     public ParticleSystem effectEject;
+    public Text ammoTxt;
 
     //private
     private bool fireRateBool = true;
@@ -39,6 +41,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ammoTxt.text = ammoInMag + "/" + ammo;
         if(_type.ToString() == "Rifle")
         {
             if (Input.GetMouseButton(0))

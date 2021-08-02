@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{368D7CC5-7A1A-B1BB-13BE-37F7CB724028}</ProjectGuid>
+    <ProjectGuid>{DFD1AAA9-9066-F3A3-FA88-B73A5D967FFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Imports\Desert Environment\Example\AutoMoveAndRotate.cs" />
     <Compile Include="Assets\Imports\Effects Pack\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\Imports\Effects Pack\Shared\Ramps\Runtime\RampAsset.cs" />
     <Compile Include="Assets\Imports\Effects Pack\Shared\Scripts\AdjustTimeScale.cs" />
@@ -76,7 +77,10 @@
     <Compile Include="Assets\Imports\Effects Pack\Shared\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Imports\Effects Pack\Shared\Scripts\SimpleCharacterMotor.cs" />
     <Compile Include="Assets\Imports\Effects Pack\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Bot.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\DamageLocal.cs" />
+    <Compile Include="Assets\Scripts\GameplayController.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -91,6 +95,7 @@
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Imports\Desert Environment\Models\Shaders\WindShader.shader" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
@@ -102,49 +107,58 @@
     <None Include="Assets\Imports\Effects Pack\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
     <None Include="Assets\Imports\Effects Pack\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS - 2.0/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>C:/Users/Willian Matheus/Desktop/Cursos/Unity - Rodrigo/FPS - NAC/FPS-2.0/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>E:/2019.3.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -683,6 +697,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>E:/2019.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{A8F4841F-4B78-0877-2264-6BF5C365F62A}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

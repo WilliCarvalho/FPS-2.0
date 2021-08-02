@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float runSpeed;
     public float sensivity;
+    public Slider lifeSlider;
 
     [Header("Imports")]
     public Camera cam;
@@ -23,16 +25,22 @@ public class PlayerController : MonoBehaviour
     private Vector3 rotation;
     private Vector3 camRotation;
     private float rotCam;
+    public GameObject dieCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
+        dieCanvas.SetActive(false);
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Canvas
+        lifeSlider.value = life;
+        #endregion
+
         #region Movement
         float movX = Input.GetAxisRaw("Horizontal");
         float movY = Input.GetAxisRaw("Vertical");
@@ -74,6 +82,20 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
+    public void TakeDamage(int i)
+    {
+        life -= i;
+        if(life <= 0)
+        {
+            Die();            
+        }
+    }
+
+    public void Die()
+    {
+        dieCanvas.SetActive(true);
+    }
+
     private void FixedUpdate()
     {
         if (enableMouse)
@@ -101,6 +123,14 @@ public class PlayerController : MonoBehaviour
             rotCam = Mathf.Clamp(rotCam, -80, 80);
 
             cam.transform.localEulerAngles = new Vector3(-rotCam, 0, 0);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Bullet")
+        {
+            TakeDamage(5);
         }
     }
 }
